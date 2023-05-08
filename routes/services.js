@@ -11,6 +11,7 @@ const { validateJWT } = require("../middlewares/validateJWT");
 const router = express.Router();
 
 const {
+  getServicesByUserId,
   createService,
   deleteService,
   updateService,
@@ -18,6 +19,9 @@ const {
 
 // Todas tienen que pasar por la validacion del token
 router.use(validateJWT);
+
+// Obtener eventos
+router.get("/", getServicesByUserId);
 
 // Crear Servicio
 router.post(

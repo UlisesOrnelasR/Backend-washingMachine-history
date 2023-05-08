@@ -1,6 +1,23 @@
 const { response } = require("express");
 const Service = require("../models/Service");
 
+const getServicesByUserId = async (req, res = response) => {
+  const uid = req.uid;
+  try {
+    const services = await Service.find({ user: uid });
+    res.json({
+      ok: true,
+      services,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      ok: false,
+      msg: "Talk with administrator...",
+    });
+  }
+};
+
 const createService = async (req, res = response) => {
   const service = new Service(req.body);
 
@@ -94,6 +111,7 @@ const deleteService = async (req, res = response) => {
 };
 
 module.exports = {
+  getServicesByUserId,
   createService,
   deleteService,
   updateService,
