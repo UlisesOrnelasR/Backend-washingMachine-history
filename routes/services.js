@@ -10,7 +10,7 @@ const { validateJWT } = require("../middlewares/validateJWT");
 
 const router = express.Router();
 
-const { createService } = require("../controllers/services");
+const { createService, deleteService } = require("../controllers/services");
 
 // Todas tienen que pasar por la validacion del token
 router.use(validateJWT);
@@ -31,5 +31,8 @@ router.post(
   ],
   createService
 );
+
+// Borrar servicio
+router.delete("/:id", deleteService);
 
 module.exports = router;
