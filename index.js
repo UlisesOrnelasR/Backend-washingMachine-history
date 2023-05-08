@@ -20,6 +20,7 @@ app.use(express.json());
 
 //Rutas
 app.use("/api/auth", require("./routes/auth")); // Auth
+app.use("/api/services", require("./routes/services")); // Services
 
 app.get("*", (req, res) => {
   res.sendFile(__dirname + "/public/index.html"); // Esto es para que siempre se muestre el index.html cuando se ingrese a la aplicacion desde cualquier parte de la pagina web, pero solo cuando no se encuentre en ninguna de las rutas anteriores.
