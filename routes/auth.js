@@ -21,6 +21,7 @@ router.post(
   [
     // middlewares
     check("name", "Name is required").not().isEmpty(),
+    check("lastName", "lastName is required").not().isEmpty(),
     check("email", "Email is required").isEmail(),
     check("password", "Password must be at leats be 6 characters").isLength({
       min: 6,
