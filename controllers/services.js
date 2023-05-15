@@ -4,7 +4,7 @@ const Service = require("../models/Service");
 const getServicesByUserId = async (req, res = response) => {
   const uid = req.uid;
   try {
-    const services = await Service.find({ user: uid });
+    const services = await Service.find({ user: uid }).populate("user", "name");
     res.json({
       ok: true,
       services,
