@@ -26,7 +26,7 @@ const createService = async (req, res = response) => {
     const serviceSaved = await service.save();
     res.json({
       ok: true,
-      event: serviceSaved,
+      service: serviceSaved,
     });
   } catch (error) {
     console.log(error);
@@ -68,7 +68,7 @@ const updateService = async (req, res = response) => {
 
     res.json({
       ok: true,
-      event: updatedService,
+      service: updatedService,
     });
   } catch (error) {
     console.log(error);
